@@ -4,21 +4,15 @@ import Link from 'next/link';
 import styles from './styles/Utils.module.scss';
 
 const Breadcrumbs = () => {
-  const router = useRouter()
-  const pathname = usePathname()
-  const searchParams = useSearchParams()
-  // console.log(router)
-  // console.log(pathname)
-  // console.log(searchParams)
-  // const linkPath = router.asPath.split('/');
-  // linkPath.shift();
-
-  // const breadcrumbs = linkPath.map((path: any, i: any) => {
-  //     return { breadcrumb: path, href: '/' + linkPath.slice(0, i + 1).join('/') };
-  // });
+  const pathname: any = usePathname()
+  const activeLink: any = pathname?.split('/')
+  activeLink.shift();
+  const breadcrumbs = activeLink.map((path: any, i: any) => {
+      return { breadcrumb: path, href: '/' + activeLink.slice(0, i + 1).join('/') };
+  });
   return (
     <div className={styles.breadcrumbs}>
-      {/* <ol>
+      <ol>
         {breadcrumbs.map((breadcrumb: any, i: number) => 
         (i != 0) && 
           <li key={i} className={i == (breadcrumbs.length - 1) ? styles.active : ''}>
@@ -27,7 +21,7 @@ const Breadcrumbs = () => {
             </Link>
           </li>
         )}
-      </ol> */}
+      </ol>
     </div>
   );
 };

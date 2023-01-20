@@ -18,7 +18,9 @@ const Login = () => {
   }
   
   const handleGoogleLogin = async () => {
-    return await signIn()
+    return await signIn('google', {
+      callbackUrl: '/cms/dashboard'
+    })
   }
   return (
     <>

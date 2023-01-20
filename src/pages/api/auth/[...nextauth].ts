@@ -1,5 +1,5 @@
-import NextAuth from "next-auth"
-import GoogleProvider from "next-auth/providers/google"
+import NextAuth from 'next-auth'
+import GoogleProvider from 'next-auth/providers/google'
 const env = process.env
 export default NextAuth({
   providers: [
@@ -24,18 +24,18 @@ export default NextAuth({
     //   return false // Do different verification for other providers that don't have `email_verified`
     // },
     jwt: ({ token, account, profile }) => {
-      console.log('token')
-      console.log(token)
+      // console.log('token')
+      // console.log(token)
       if(account){
-        console.log('account')
-        console.log(account)
-        console.log(profile)
+        // console.log('account')
+        // console.log(account)
+        // console.log(profile)
       }
       return token;
     },
     session: ({ session }) => {
-      console.log('session')
-      console.log(session);
+      // console.log('session')
+      // console.log(session);
       // console.log(token);
       return session;
     }

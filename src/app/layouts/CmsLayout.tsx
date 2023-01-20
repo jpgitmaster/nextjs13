@@ -11,6 +11,7 @@ const CmsLayout = ({children}: any) => {
   const src = `${image}`;
   // console.log( session )
   const pathname = usePathname()
+  const activeLink = pathname?.split('/')[2]
   const handleLogout = async () => {
     return await signOut({redirect: true, callbackUrl: '/'})
   }
@@ -18,32 +19,32 @@ const CmsLayout = ({children}: any) => {
     <div className={styles.app}>
       <div className={styles.links}>
         <ul>
-          <li className={pathname === '/cms/dashboard' ? styles.linkActive : ''}>
+          <li className={activeLink === 'dashboard' ? styles.linkActive : ''}>
             <Link href='/cms/dashboard'>
               Dashboard
             </Link>
           </li>
-          <li className={pathname === '/cms/front' ? styles.linkActive : ''}>
+          <li className={activeLink === 'front' ? styles.linkActive : ''}>
             <Link href='/cms/front'>
               Front
             </Link>
           </li>
-          <li className={pathname === '/cms/posts' ? styles.linkActive : ''}>
+          <li className={activeLink === 'posts' ? styles.linkActive : ''}>
             <Link href='/cms/posts'>
               Posts
             </Link>
           </li>
-          <li className={pathname === '/cms/images' ? styles.linkActive : ''}>
+          <li className={activeLink === 'images' ? styles.linkActive : ''}>
             <Link href='/cms/images'>
               Images
             </Link>
           </li>
-          <li className={pathname === '/cms/users' ? styles.linkActive : ''}>
+          <li className={activeLink === 'users' ? styles.linkActive : ''}>
             <Link href='/cms/users'>
               Users
             </Link>
           </li>
-          <li className={pathname === '/cms/roles' ? styles.linkActive : ''}>
+          <li className={activeLink === 'roles' ? styles.linkActive : ''}>
             <Link href='/cms/roles'>
               Roles
             </Link>
