@@ -1,0 +1,20 @@
+@import '@/styles/forms';
+
+.loginForm{
+    width: 400px;
+    margin: 100px auto 0;
+    .formTitle{
+        margin: 0 0 35px;
+        font: 25px NunitoSansReg;
+        color: $blue;
+    }
+    .btnblue{
+        width: 100%;
+    }
+    .errtotal{
+        color: $red;
+        font-size: 12px;
+        margin: 5px 0 0;
+        text-align: center;
+    }
+}

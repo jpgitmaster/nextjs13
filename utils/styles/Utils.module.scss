@@ -1,0 +1,40 @@
+.breadcrumbs{
+    flex: 1;
+    ol{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        li{
+            list-style: none;
+            &::before {
+                display: inline-block;
+                content: '/';
+                margin: 0 4px;
+                font-size: 10px;
+            }
+            &:nth-child(1){
+                &::before {
+                    content: '';
+                    display: none;
+                }
+                a{
+                    padding-left: 0;
+                }
+            }
+            &.active{
+                a{
+                    pointer-events: none;
+                    color: rgba(#0077c0, .6);
+                    cursor: not-allowed;
+                }
+            }
+            a{
+                text-transform: uppercase;
+                font-size: 11px;
+                text-decoration: none;
+                color: #0077c0;
+                padding: 5px;
+            }
+        }
+    }
+}
