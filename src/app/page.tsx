@@ -2,7 +2,6 @@
 'use client';
 import Axios from 'axios'
 import { useState } from 'react'
-import styles from './page.module.css'
 
 export default function Home() {
   const [image, setImage] = useState<any>()
@@ -44,7 +43,7 @@ export default function Home() {
   }
   
   return (
-    <main className={styles.main}>
+    <main>
       <form onSubmit={(e) => handleSubmit(e)} autoComplete='off' encType='multipart/form-data'>
         <input type='file' name='imgname' onChange={handleFileChange} />
         <button type='submit'>Add Image</button>

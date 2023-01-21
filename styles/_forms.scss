@@ -1,4 +1,4 @@
-@import './variables';
+@import './colors';
 .npt{
 	position: relative;
 	width: 100%;
@@ -35,13 +35,13 @@
       width: 100%;
       text-overflow: ellipsis;
       border-radius: 0;
-      // background-color: $transparent;
+      background-color: $transparent;
       // -webkit-appearance: none;
       &:focus{outline:none;}
       &:disabled{
         cursor: not-allowed;
-        // background-color: $light_gray;
-        // border-color: $gray;
+        background-color: $lightgray;
+        border-color: $gray;
       }
     }
     select{
@@ -252,26 +252,26 @@
       color: $white;
       border-color: $border_blue;
     }
-    // &.btngreen{
-    //   background-color: $green;
-    //   color: $white;
-    //   border-color: $border_green;
-    // }
-    // &.btnyellow{
-    //   background-color: $yellow;
-    //   color: $white;
-    //   border-color: $border_yellow;
-    // }
-    // &.btnred{
-    //   background-color: $red;
-    //   color: $white;
-    //   border-color: $border_red;
-    // }
-    // &.disabled, &:disabled{
-    //   cursor: not-allowed;
-    //   background-color: $light_gray;
-    //   border-color: $gray;
-    //   color: $dark_gray;
-    //   pointer-events: none;
-    // }
+    &.btngreen{
+      background-color: $green;
+      color: $white;
+      border-color: $border_green;
+    }
+    &.btnyellow{
+      background-color: $yellow;
+      color: $white;
+      border-color: $border_yellow;
+    }
+    &.btnred{
+      background-color: $red;
+      color: $white;
+      border-color: $border_red;
+    }
+    &.disabled, &:disabled{
+      cursor: not-allowed;
+      background-color: $lightgray;
+      border-color: $gray;
+      color: $darkgray;
+      pointer-events: none;
+    }
 }
