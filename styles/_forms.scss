@@ -51,7 +51,7 @@
       background-repeat: no-repeat;
       appearance: none;
       padding: 10px 10px 9px;
-      height: 35.5px;
+      height: 37px;
     }  
     &.isFile{
       display: block;
@@ -125,116 +125,116 @@
     }
   
     .popover{
+      position: absolute;
+      right: 10px;
+      bottom: 75px;
+      z-index: 1;
+      max-width: 250px;
+      display: none;
+      &.textarea{
+        bottom: 93px;
+      }
+      .arrow{
+        left: 50%;
         position: absolute;
-        right: 10px;
-        bottom: 75px;
-        z-index: 1;
-        max-width: 250px;
-        display: none;
-        &.textarea{
-          bottom: 93px;
-        }
-        .arrow{
-          left: 50%;
+        bottom: -7px;
+        &::after, &::before {
           position: absolute;
-          bottom: -7px;
-          &::after, &::before {
-            position: absolute;
-            display: block;
-            // border-color: $transparent;
-            border-style: solid;
-            bottom: 0;
-            content: "";
-            border-width: .5rem .5rem 0;
-          }
-          &::after {
-            bottom: 1px;
-            border-width: .5rem .5rem 0;
-            // border-top-color: $white;
-          }
-        }
-        .popoverBody{
-            padding: 4px 10px;
-            line-height: 16px;
-            // background-color: $white;
-            border: 1px solid;
-            float: left;
-            width: 100%;
-            .errmsg{
-              margin: 0;
-              padding: 0;
-              min-height: auto;
-              font-size: 12px;
-              text-align: center;
-              float: none;
-            }
-        }
-      
-        &.flipInY
-        {
-            -webkit-animation: flipInY .8s;
-            animation: flipInY .8s;
-        }
-        @keyframes flipInY
-        {
-            0% {
-                transform: perspective(500px) rotateY(70deg);
-                opacity: .2;
-            }
-            30% {
-                transform: perspective(500px) rotateY(-30deg);
-            }
-            85% {
-                transform: perspective(500px) rotateY(10deg);
-            }
-            100% {
-                transform: perspective(500px) rotateY(0deg);
-            }
-        }
-        @-webkit-keyframes flipInY
-        {
-            0% {
-                -webkit-transform: perspective(500px) rotateY(70deg);
-                opacity: .2;
-            }
-            30% {
-                -webkit-transform: perspective(500px) rotateY(-30deg);
-            }
-            85% {
-                -webkit-transform: perspective(500px) rotateY(10deg);
-            }
-            100% {
-                -webkit-transform: perspective(500px) rotateY(0deg);
-            }
-        }
-    }
-    &:focus-within{
-        .popover{
           display: block;
-          opacity: 1;
-          transition: opacity 0.2s ease all;
-          -moz-transition: opacity 0.2s ease all;
-          -webkit-transition: opacity 0.2s ease all;
+          border-color: transparent;
+          border-style: solid;
+          bottom: 0;
+          content: "";
+          border-width: .5rem .5rem 0;
         }
-    }
-    .popover{
-        opacity: 0;
-        display: none;
+        &::after {
+          bottom: 1px;
+          border-width: .5rem .5rem 0;
+          border-top-color: $white;
+        }
+      }
+      .popoverBody{
+          padding: 4px 10px;
+          line-height: 16px;
+          background-color: $white;
+          border: 1px solid;
+          float: left;
+          width: 100%;
+          .errmsg{
+            margin: 0;
+            padding: 0;
+            min-height: auto;
+            font-size: 12px;
+            text-align: center;
+            float: none;
+          }
+      }
+    
+      &.flipInY
+      {
+          -webkit-animation: flipInY .8s;
+          animation: flipInY .8s;
+      }
+      @keyframes flipInY
+      {
+          0% {
+              transform: perspective(500px) rotateY(70deg);
+              opacity: .2;
+          }
+          30% {
+              transform: perspective(500px) rotateY(-30deg);
+          }
+          85% {
+              transform: perspective(500px) rotateY(10deg);
+          }
+          100% {
+              transform: perspective(500px) rotateY(0deg);
+          }
+      }
+      @-webkit-keyframes flipInY
+      {
+          0% {
+              -webkit-transform: perspective(500px) rotateY(70deg);
+              opacity: .2;
+          }
+          30% {
+              -webkit-transform: perspective(500px) rotateY(-30deg);
+          }
+          85% {
+              -webkit-transform: perspective(500px) rotateY(10deg);
+          }
+          100% {
+              -webkit-transform: perspective(500px) rotateY(0deg);
+          }
+      }
+  }
+  &:focus-within{
+      .popover{
+        display: block;
+        opacity: 1;
         transition: opacity 0.2s ease all;
         -moz-transition: opacity 0.2s ease all;
         -webkit-transition: opacity 0.2s ease all;
-        .arrow{
-          &::before {
-            border-top-color: $red;
-          }
-          &::after{
-            border-top-color: $white;
-          }
+      }
+  }
+  .popover{
+      opacity: 0;
+      display: none;
+      transition: opacity 0.2s ease all;
+      -moz-transition: opacity 0.2s ease all;
+      -webkit-transition: opacity 0.2s ease all;
+      .arrow{
+        &::before {
+          border-top-color: $red;
         }
-        .popoverBody{
-          border-color: $red;
+        &::after{
+          border-top-color: $white;
         }
-    }
+      }
+      .popoverBody{
+        border-color: $red;
+      }
+  }
 }
 .button{
     padding: 10px 20px 8px;
