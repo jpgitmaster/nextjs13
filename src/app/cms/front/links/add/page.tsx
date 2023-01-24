@@ -8,6 +8,7 @@ const AddLink = () => {
   const {
       // STATES
       link,
+      links_arr,
       error,
       loader,
       statusData,
@@ -55,9 +56,23 @@ const AddLink = () => {
               <label className={styles.lbl}>Depth: <span>*</span></label>
               <select name='depth' value={link.depth} onChange={handleChange}>
                 <option value='0'>Parent</option>
-                <option value='1'>Child</option>
+                {
+                  links_arr.length && <option value='1'>Child</option>
+                }
               </select>
           </div>
+          {
+            link.depth == 1 &&
+            <div className={styles.npt}>
+                <label className={styles.lbl}>Parent:</label>
+                <select name='parentId' value={link.parentId} onChange={handleChange}>
+                    <option></option>
+                    {
+                        links_arr.length && links_arr.map((link: { [x: string]: string }) => link.parent == null && <option key={link.id} value={link.id}>{link.name}</option>)
+                    }
+                </select>
+            </div>
+          }
           <button type='submit' className={`${styles.button} ${styles.btngreen}`}>Add Link</button>
         </form>
       </div>

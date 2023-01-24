@@ -64,7 +64,7 @@ const CmsLayout = ({children}: any) => {
               </div>
             </div>
             <div className={styles.avapic}>
-              <Image loader={() => src} src={src} alt={name} width={100} height={100} unoptimized={true} />
+              <Image loader={() => src} src={src} alt={name} priority width={100} height={100} unoptimized={true} />
             </div>
           </div>
         </div>

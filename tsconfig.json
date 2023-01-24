@@ -22,6 +22,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
+      "@/dbconnect/*": ["./prisma/*"],
       "@/styles/*": ["./styles/*"],
       "@/utils/*": ["./utils/*"],
     }

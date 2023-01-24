@@ -4,13 +4,20 @@ import Validate from '@/utils/Validator'
 import ListStates from './../../states'
 import APIcalls from './../../api'
 const AddPageController = () => {
-    const { page_, page_validations } = ListStates()
+    const { page_init, page_validations } = ListStates()
     const {status, setStatus, addPage} = APIcalls()
     const { loader, statusData } = status
     const [totalErr, setTotalErr] = useState(0)
-    const [page, setPage] = useState<any>(page_)
-    const [error, setError] = useState<any>(page_)
-
+    const [page, setPage] = useState<any>(page_init)
+    const [error, setError] = useState<any>(page_init)
+    const configEditor = {
+        buttons: ['source', '|', 'bold', 'strikethrough', 'underline', 'italic', '|', 'superscript', 'subscript', '|', 'ul', 'ol', '|', 'outdent', 'indent', '|', 'font', 'fontsize', 'brush', 'paragraph', '|', 'image', 'video', 'table', 'link', '|', 'align'],
+        buttonsSM: ['source', '|', 'bold', 'strikethrough', 'underline', 'italic', '|', 'superscript', 'subscript', '|', 'ul', 'ol', '|', 'outdent', 'indent', '|', 'font', 'fontsize', 'brush', 'paragraph', '|', 'image', 'video', 'table', 'link', '|', 'align'],
+        height: 500,
+        addNewLine: false,
+        hidePoweredByJodit: true,
+        readonly: false, // all options from https://xdsoft.net/jodit/doc/
+    }
     // REMOVING CLIENT VALIDATION PER INPUT
     const removeErr = (name: string) => {
         if (error[name]) {
@@ -24,6 +31,15 @@ const AddPageController = () => {
         const { name, value } = event.target
         setPage({ ...page, [name]: value })
         removeErr(name)
+    }
+
+    const handleLinkID = (value: any) => {
+        setPage({ ...page, linkId: value.id });
+        removeErr('linkId')
+    }
+
+    const handleContent = (content: any) => {
+        setPage({ ...page, content: content});
     }
 
     // HANDLE SUBMIT
@@ -51,9 +67,12 @@ const AddPageController = () => {
         error,
         loader,
         statusData,
+        configEditor,
 
         // HANDLES
         handleChange,
+        handleLinkID,
+        handleContent,
         handleSubmit,
     }
 }

@@ -1,4 +1,5 @@
 @import '@/styles/colors';
+@import '@/styles/helpers';
 @import '@/styles/forms';
 .sublinks{
     background-color: $gray;
@@ -66,14 +67,95 @@
             display: inline-block;
         }
     }
-
+    .pageForm{
+        width: 80%;
+        margin: 40px auto 0;
+        display: flex;
+        flex-direction: column;
+        .button.btngreen{
+            width: 400px;
+            margin: 0 auto;
+            border-radius: 10px;
+        }
+    }
     .linkForm{
         width: 400px;
         margin: 50px auto 0;
-
         .button.btngreen{
             width: 100%;
             border-radius: 10px;
+        }
+    }
+
+    .linkDropdown{
+        margin: -13px 0 35px;
+        position: relative;
+        &.err .dropdownInput{
+            border-color: $red;
+        }
+        .linkLabel{
+            font: 10px NunitoSansBold;
+            font-weight: 600;
+            color: $blue;
+            text-transform: uppercase;
+            float: left;
+            span {
+                color: $red;
+                font-size: 13px;
+                float: right;
+                margin-left: 5px;
+                margin-top: -3px;
+            }
+        }
+        .clearLink{
+            float: right;
+            color: $red;
+            cursor: pointer;
+            font: 10px NunitoSansBold;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+        .dropdownInput{
+            border: 1px solid $blue;
+            padding: 7px 12px 0;
+            font-size: 13px;
+            cursor: pointer;
+            background-image: linear-gradient(45deg, transparent 50%, $black 50%), linear-gradient(135deg, $black 50%, transparent 50%);
+            background-position: calc(100% - 11px) calc(1em + 0.5px), calc(100% - 6px) calc(1em + 0.5px), calc(100% - 2.5em) 0.5em;
+            background-size: 5px 5px, 5px 5px, 0.5px 1.5em;
+            background-repeat: no-repeat;
+            height: 35px;
+            clear: both;
+        }
+        .linkNavs{
+            padding: 10px;
+            border: 1px solid $blue;
+            position: absolute;
+            top: 48px;
+            width: 100%;
+            background-color: $lightgray;
+            z-index: 2;
+            .linkMenu{
+                margin-left: 20px;
+                li{
+                    .linkWrapper:hover, .linkWrapper.active{
+                        color: $blue;
+                        cursor: pointer;
+                    }
+                }
+                .linkWrapper{
+                    padding: 5px 10px;
+                    font-size: 13px;
+                    &.disabled{
+                        color: $darkgray;
+                        pointer-events: none;
+                        cursor: not-allowed;
+                    }
+                }
+                .linkSubmenu{
+                    margin-left: 20px;
+                }
+            }
         }
     }
 }

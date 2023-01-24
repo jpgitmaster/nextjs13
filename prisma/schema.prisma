@@ -1,0 +1,218 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("NEXT_PUBLIC_DB_CONNECTION")
+}
+
+// datasource db {
+//   provider = "mysql"
+//   url      = "mysql://root:pa88w0rd@nextjsdb.cyevy2odqrv0.ap-southeast-1.rds.amazonaws.com:3306/nextjs_schema"
+// }
+
+model User {
+  id            String    @id @unique @default(cuid())
+  userId        String?   @map("user_id") @db.VarChar(50)
+  roleId        String?   @map("role_id") @db.VarChar(50)
+  password      String    @db.VarChar(255)
+  firstName     String    @map(name: "first_name") @db.VarChar(50)
+  lastName      String    @map(name: "last_name") @db.VarChar(50)
+  email         String    @unique @db.VarChar(100)
+  image         String?   @db.VarChar(255)
+  emailVerified DateTime? @map("email_verified")
+  createdAt     DateTime  @default(now()) @map(name: "created_at")
+  updatedAt     DateTime  @default(now()) @map(name: "updated_at")
+  role          Role?     @relation(name: "UserRole2", fields: [roleId], references: [id])
+  user          User?     @relation("UserCreator", fields: [userId], references: [id])
+  roles         Role[]    @relation(name: "UserRole1")
+  users         User[]    @relation(name: "UserCreator")
+
+  @@map("users")
+}
+
+model Role {
+  id          String   @id @default(cuid())
+  userId      String   @map("user_id") @db.VarChar(50)
+  name        String   @db.VarChar(50)
+  description String?  @db.Text()
+  color       String   @db.VarChar(50)
+  users       Json?    @db.Json()
+  pages       Json?    @db.Json()
+  images      Json?    @db.Json()
+  roles       Json?    @db.Json()
+  reports     Json?    @db.Json()
+  createdAt   DateTime @default(now()) @map(name: "created_at")
+  updatedAt   DateTime @default(now()) @map(name: "updated_at")
+  user        User?    @relation("UserRole1", fields: [userId], references: [id])
+  users_      User[]   @relation("UserRole2")
+
+  @@map("roles")
+}
+
+model Link {
+  id        String   @id @default(cuid())
+  name      String   @db.VarChar(50)
+  slug      String   @db.VarChar(50)
+  depth     Boolean? @db.Bit(1)
+  parentId  String?  @map("parent_id") @db.VarChar(50)
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @default(now()) @map(name: "updated_at")
+  link      Link?    @relation("SubLinks", fields: [parentId], references: [id])
+  sublinks  Link[]   @relation(name: "SubLinks")
+  page      Page?    @relation(name: "PageLink")
+
+  @@map("links")
+}
+
+model Page {
+  id           String   @id @default(cuid())
+  title        String?  @db.VarChar(200)
+  content      String?  @db.LongText()
+  pageTemplate String?  @map(name: "page_template") @db.VarChar(100)
+  postCategory String?  @map(name: "post_category") @db.VarChar(100)
+  linkId       String   @unique @map("link_id") @db.VarChar(50)
+  createdAt    DateTime @default(now()) @map(name: "created_at")
+  updatedAt    DateTime @default(now()) @map(name: "updated_at")
+  link         Link     @relation(name: "PageLink", fields: [linkId], references: [id])
+
+  @@map("pages")
+}
+
+model Folder {
+  id          String  @id @default(cuid())
+  name        String  @db.VarChar(50)
+  code        String  @unique @db.VarChar(100)
+  description String? @db.Text()
+  images      Image[] @relation(name: "FolderRelation")
+
+  @@map("folders")
+}
+
+model Image {
+  id          String   @id @default(cuid())
+  name        String?  @db.VarChar(100)
+  keycode     String   @unique @db.VarChar(100)
+  imagecode   String?  @unique @db.VarChar(100)
+  distinct    String?  @db.VarChar(20)
+  description String?  @db.Text()
+  folderId    String?  @map("folder_id") @db.VarChar(50)
+  imgname     String   @db.VarChar(255)
+  imgdetails  Json     @db.Json()
+  width       Int      @db.MediumInt()
+  height      Int      @db.MediumInt()
+  redirect    String?  @db.Text()
+  createdAt   DateTime @default(now()) @map(name: "created_at")
+  updatedAt   DateTime @default(now()) @map(name: "updated_at")
+  folder      Folder?  @relation(name: "FolderRelation", fields: [folderId], references: [id])
+  posts       Post[]   @relation(name: "ImageRelation")
+  project     Project? @relation(name: "ProjectRelation")
+
+  @@map("images")
+}
+
+model Project {
+  id              String   @id @default(cuid())
+  name            String?  @db.VarChar(100)
+  metaDescription String?  @map("meta_desciption") @db.VarChar(255)
+  logo            String?  @unique @db.VarChar(100)
+  email           String?  @db.VarChar(100)
+  mobile          String?  @db.VarChar(20)
+  phone           String?  @db.VarChar(20)
+  address         String?  @db.VarChar(255)
+  socmed          String?  @db.VarChar(100)
+  layer1          Json?    @db.Json()
+  layer2          Json?    @db.Json()
+  layer3          Json?    @db.Json()
+  slidingBanners  String?  @map("sliding_banners") @db.VarChar(100)
+  transition      Boolean? @db.TinyInt()
+  copyright       String?  @db.VarChar(255)
+  image           Image?   @relation(name: "ProjectRelation", fields: [logo], references: [imagecode])
+
+  @@map("projects")
+}
+
+model PostCategory {
+  id          String  @id @default(cuid())
+  name        String  @db.VarChar(50)
+  title       String? @db.VarChar(200)
+  code        String  @unique @db.VarChar(100)
+  description String? @db.Text()
+  posts       Post[]  @relation(name: "CategoryRelation")
+
+  @@map("post_categories")
+}
+
+model Post {
+  id         String        @id @default(cuid())
+  title      String?       @db.VarChar(100)
+  imagecode  String?       @db.VarChar(50)
+  content    String?       @db.Text()
+  layout     String?       @db.Text()
+  categoryId String        @map("category_id") @db.VarChar(50)
+  createdAt  DateTime      @default(now()) @map(name: "created_at")
+  updatedAt  DateTime      @default(now()) @map(name: "updated_at")
+  category   PostCategory? @relation(name: "CategoryRelation", fields: [categoryId], references: [id])
+  image      Image?        @relation(name: "ImageRelation", fields: [imagecode], references: [imagecode])
+
+  @@map("posts")
+}
+
+// model Account {
+//   id                  String  @id @default(cuid())
+//   userId             String  @map("user_id")
+//   type               String
+//   provider           String
+//   providerAccountId  String  @map("provider_account_id")
+//   refresh_token      String? @db.Text
+//   access_token       String? @db.Text
+//   expires_at         Int?
+//   token_type         String?
+//   scope              String?
+//   id_token           String? @db.Text
+//   session_state      String?
+
+//   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+//   @@unique([provider, providerAccountId])
+//   @@map("accounts")
+// }
+
+// model Session {
+//   id           String   @id @default(cuid())
+//   sessionToken String   @unique @map("session_token")
+//   userId       String   @map("user_id")
+//   expires      DateTime
+//   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+//   @@map("sessions")
+// }
+
+// model User {
+//   id            String    @id @default(cuid())
+//   password      String    @db.VarChar(255)
+//   firstName     String    @db.VarChar(100) @map(name: "first_name")
+//   lastName      String    @db.VarChar(100) @map(name: "last_name")
+//   email         String    @unique
+//   image         String?    @db.VarChar(255)
+//   emailVerified DateTime?  @map("email_verified")
+//   createdAt     DateTime  @default(now()) @map(name: "created_at")
+//   updatedAt     DateTime  @default(now()) @map(name: "updated_at")
+//   accounts      Account[]
+//   sessions      Session[]
+
+//   @@map("users")
+// }
+
+// model VerificationToken {
+//   identifier String
+//   token      String   @unique
+//   expires    DateTime
+
+//   @@unique([identifier, token])
+//   @@map("verificationtokens")
+// }

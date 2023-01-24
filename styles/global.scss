@@ -1,3 +1,4 @@
+@import './colors';
 *{
     margin: 0;
     padding: 0;
@@ -19,4 +20,61 @@
   font-family: NunitoSansSemiBold;
   font-weight: 700;
   src: local('Nunito_Sans'), url('./fonts/Nunito-Sans/NunitoSans-SemiBold.ttf') format('truetype');
+}
+
+.jodit-react-container{
+  width: 100%;
+}
+.jodit-status-bar .jodit-status-bar__item a:hover{
+  background-color: $blue !important;
+}
+.jodit-xpath{
+  .jodit-xpath__item{
+    a{
+      color: $white;
+    }
+  }
+}
+
+.jodit-container:not(.jodit_inline) {
+  border: 1px solid $blue !important;
+  border-radius: 0 !important;
+  .jodit-toolbar-button__button:hover:not([disabled]),
+  .jodit-toolbar-button__trigger:hover:not([disabled]){
+    background-color: inherit;
+  }
+  .jodit-toolbar-editor-collection_size_middle.jodit-toolbar-editor-collection_mode_horizontal{
+    background-image: none;
+  }
+  .jodit-toolbar__box:not(:empty){
+    border-bottom: 1px solid $blue;
+  }
+  .jodit-toolbar-button_size_tiny .jodit-icon{
+    fill: $white;
+  }
+  .jodit-editor__resize svg{
+    fill: $white !important;
+  }
+  .jodit-workplace+.jodit-status-bar:not(:empty) {
+    border-top: 1px solid $blue;
+    background-color: $blue;
+    color: $white;
+    border-radius: 0;
+}
+  .jodit-ui-separator{
+    border-right: 0;
+  }
+  .jodit-toolbar__box:not(:empty){
+    background-color: $white;
+    border-radius: 0;
+    .jodit-icon{
+      fill: $blue;
+    }
+    .jodit-toolbar-button__trigger{
+      opacity: 1;
+      svg{
+        fill: $blue;
+      }
+    }
+  }
 }

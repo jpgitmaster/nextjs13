@@ -6,15 +6,19 @@ const ListStates = () => {
             submessage: ''
         }
     }
-    
-    const link_ = {
+    const links_init = {
+        links_arr: [],
+        links_total: 0,
+    }
+
+    const link_init = {
         name: '',
         slug: '',
         depth: '',
         parentId: ''
     }
 
-    const page_ = {
+    const page_init = {
         title: '',
         linkId: '',
         content: '',
@@ -29,13 +33,15 @@ const ListStates = () => {
 
     const page_validations = {
         title: { usename: 'Title', required: true, minLength: 6 },
+        linkId: { usename: 'Link', required: true },
     };
     
     return {
         status_,
-        link_,
+        links_init,
+        link_init,
         link_validations,
-        page_,
+        page_init,
         page_validations,
     }
 }

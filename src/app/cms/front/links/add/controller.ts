@@ -1,15 +1,17 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Validate from '@/utils/Validator'
 import ListStates from './../../states'
 import APIcalls from './../../api'
 const AddLinkController = () => {
-    const { link_, link_validations } = ListStates()
-    const {status, setStatus, addLink} = APIcalls()
+    const { link_init, link_validations } = ListStates()
+    const {links, status, setStatus, addLink, getLinks} = APIcalls()
     const { loader, statusData } = status
+    const { links_arr } = links;
     const [totalErr, setTotalErr] = useState(0)
-    const [link, setLink] = useState<any>(link_)
-    const [error, setError] = useState<any>(link_)
+    const [link, setLink] = useState<any>(link_init)
+    const [error, setError] = useState<any>(link_init)
+    const [isUpdate, setUpdate] = useState(false)
 
     // REMOVING CLIENT VALIDATION PER INPUT
     const removeErr = (name: string) => {
@@ -56,9 +58,19 @@ const AddLinkController = () => {
         }
         addLink(link)
     }
+
+    useEffect(() => {
+        getLinks()
+        return () => {
+            setUpdate(false)
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isUpdate])
+
     return {
         // STATES
         link,
+        links_arr,
         error,
         loader,
         statusData,
