@@ -1,0 +1,336 @@
+@import '@/styles/colors';
+@import '@/styles/forms';
+@import '@/styles/helpers';
+.innerpage{
+    float: left;
+    width: 100%;
+    padding: 30px 15px 15px;
+
+    .button.btnblue{
+        float: right;
+        border-radius: 5px;
+        padding: 2px 15px 3px 5px;
+        letter-spacing: 0.5px;
+        img{
+            float: left;
+            margin-right: 5px;
+            &.edit_icon{
+                width: 30px;
+                height: 28px;
+            }
+            &.plus_icon{
+                width: 14px;
+                height: auto;
+                margin: 8px 8px 6px 6px;
+            }
+        }
+        span{
+            font: 13px NunitoSansBold;
+            margin: 7px 0 0;
+            display: inline-block;
+        }
+    }
+    .formTitle{
+        margin: 0 0 20px;
+        font: 25px NunitoSansReg;
+        color: $text_color_dark;
+        float: left;
+    }
+    .categoryForm{
+        width: 400px;
+        margin: 0 auto;
+        .formTitle{
+            margin-bottom: 30px;
+        }
+        .button.btngreen{
+            width: 100%;
+            border-radius: 10px;
+        }
+    }
+    .postForm{
+        // width: 80%;
+        margin: 0 0 0 10px;
+        display: flex;
+        flex-direction: column;
+        .button.btngreen{
+            width: 100%;
+            margin: 0 auto;
+            border-radius: 10px;
+        }
+    }
+
+    .postsTable{
+        display: table;
+        width: 100%;
+        .postsTableHead{
+            display: table-header-group;
+            .postsTableCell{
+                background-color: $blue;
+                color: $white;
+                font: 12px NunitoSansSemiBold;
+                text-transform: uppercase;
+                letter-spacing: .4px;
+                padding: 6px 15px 10px;
+            }
+        }
+        .postsTableBody{
+            display: table-row-group;
+            .postsTableCell{
+                &:nth-child(1){
+                    padding: 0;
+                }
+            }
+            &:nth-child(even){
+                background-color: $lightgray;
+            }
+            .postsTableCell{
+                border-right: 1px solid $gray;
+                border-bottom: 1px solid $gray;
+                &:first-child{
+                    border-left: 1px solid $gray;
+                    border-right: 0;
+                }
+                &:last-child{
+                    border-right: 1px solid $gray;
+                }
+                .checkbox{
+                    float: none;
+                    margin: 0;
+                    display: inline-block;
+                    left: 2px;
+                    &.disabled{
+                        pointer-events: none;
+                        .checkmark{
+                            border-color: $darkgray;
+                        }
+                    }
+                    .checkmark{
+                        border-color: $blue;
+                    }
+                }
+            }
+        }
+        .postsTableCell{
+            display: table-cell;
+            padding: 5px 15px 15px;
+            &:first-child{
+                text-align: center;
+                width: 10px;
+                padding-right: 0;
+            }
+            &:nth-child(2){
+                padding-left: 0;
+            }
+            &:nth-child(3){
+                width: 100px;
+                text-align: center;
+            }
+            &:last-child{
+                text-align: center;
+                width: 100px;
+            }
+            .pageActions{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                top: 10px;
+                button, a{
+                    display: inline-block;
+                    width: 32px;
+                    height: 32px;
+                    padding: 5px;
+                    margin-right: 6px;
+                    border-radius: 4px;
+                    &:last-child{
+                        margin-right: 0;
+                    }
+                }
+                .onDelete{
+                    position: relative;
+                    .popover{
+                        position: absolute;
+                        right: -1px;
+                        bottom: 38px;
+                        z-index: 1;
+                        width: 250px;
+                        display: none;
+                        &.textarea{
+                          bottom: 93px;
+                        }
+                        .arrow{
+                          right: 25px;
+                          position: absolute;
+                          bottom: -7px;
+                          &::after, &::before {
+                            position: absolute;
+                            display: block;
+                            border-color: $transparent;
+                            border-style: solid;
+                            bottom: 0;
+                            content: "";
+                            border-width: .5rem .5rem 0;
+                          }
+                          &::after {
+                            bottom: 1px;
+                            border-width: .5rem .5rem 0;
+                            border-top-color: $white;
+                          }
+                        }
+                        .popoverBody{
+                            padding: 10px;
+                            line-height: 16px;
+                            background-color: $white;
+                            border: 1px solid;
+                            float: left;
+                            width: 100%;
+                            text-align: center;
+                            p{
+                                font-size: 14px;
+                            }
+                            .button{
+                                margin: 5px 3px 2px;
+                                display: inline-block;
+                                float: none;
+                                width: 60px;
+                                border-radius: 0;
+                                height: 25px;
+                                padding: 0;
+                            }
+                        }
+                      
+                        &.flipInY
+                        {
+                            -webkit-animation: flipInY .8s;
+                            animation: flipInY .8s;
+                        }
+                        @keyframes flipInY
+                        {
+                            0% {
+                                transform: perspective(500px) rotateY(70deg);
+                                opacity: .2;
+                            }
+                            30% {
+                                transform: perspective(500px) rotateY(-30deg);
+                            }
+                            85% {
+                                transform: perspective(500px) rotateY(10deg);
+                            }
+                            100% {
+                                transform: perspective(500px) rotateY(0deg);
+                            }
+                        }
+                        @-webkit-keyframes flipInY
+                        {
+                            0% {
+                                -webkit-transform: perspective(500px) rotateY(70deg);
+                                opacity: .2;
+                            }
+                            30% {
+                                -webkit-transform: perspective(500px) rotateY(-30deg);
+                            }
+                            85% {
+                                -webkit-transform: perspective(500px) rotateY(10deg);
+                            }
+                            100% {
+                                -webkit-transform: perspective(500px) rotateY(0deg);
+                            }
+                        }
+                    }
+                    &:focus-within{
+                        .popover{
+                          display: block;
+                          opacity: 1;
+                          transition: opacity 0.2s ease all;
+                          -moz-transition: opacity 0.2s ease all;
+                          -webkit-transition: opacity 0.2s ease all;
+                        }
+                    }
+                    .popover{
+                        opacity: 1;
+                        display: block;
+                        transition: opacity 0.2s ease all;
+                        -moz-transition: opacity 0.2s ease all;
+                        -webkit-transition: opacity 0.2s ease all;
+                        .arrow{
+                          &::before {
+                            border-top-color: $blue;
+                          }
+                          &::after{
+                            border-top-color: $white;
+                          }
+                        }
+                        .popoverBody{
+                          border-color: $blue;
+                        }
+                    }
+                }
+            }
+            .postsImage{
+                width: 60px;
+                height: 35px;
+                border: 1px solid $darkgray;
+                background-color: $white;
+                margin: -5px 8px 0 0;
+                padding: 2px;
+                float: left;
+            }
+        }
+    }
+
+    .checkbox{
+        position: relative;
+        width: 18px;
+        height: 18px;
+        top: 3px;
+        float: left;
+        margin-right: 10px;
+        cursor: pointer;
+        input{
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+            &:checked ~ .checkmark:after {
+                display: block;
+            }
+        }
+        input:checked + .checkmark{
+            background-color: $blue;
+        }
+        .checkmark{
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            border: 1px solid $white;
+            &:after {
+                content: "";
+                position: absolute;
+                display: none;
+            }
+            &:after {
+                left: 5px;
+                top: 0px;
+                width: 4px;
+                height: 10px;
+                border: solid $white;;
+                border-width: 0 3px 3px 0;
+                -webkit-transform: rotate(45deg);
+                -ms-transform: rotate(45deg);
+                transform: rotate(45deg);
+            }
+        }
+        &:hover{
+            .checkmark{
+                background-color: $blue;
+            }
+        }
+        &:checked ~ .checkmark {
+            background-color: $blue;
+        }
+    }
+}
+

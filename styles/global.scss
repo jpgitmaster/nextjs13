@@ -78,3 +78,6 @@
     }
   }
 }
+.jodit-container:not(.jodit_inline) .jodit-wysiwyg{
+  padding: 10px 20px !important;
+}

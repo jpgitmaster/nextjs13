@@ -27,12 +27,12 @@ const ListStates = () => {
     }
 
     const link_validations = {
-        name: { usename: 'Name', required: true, minLength: 6, maxLength: 20 },
-        slug: { usename: 'Slug', required: true, minLength: 6, maxLength: 50 },
+        name: { usename: 'Name', required: true, minLength: 4, maxLength: 20 },
+        slug: { usename: 'Slug', required: true, minLength: 4, maxLength: 50 },
     };
 
     const page_validations = {
-        title: { usename: 'Title', required: true, minLength: 6 },
+        title: { usename: 'Title', required: true, minLength: 4 },
         linkId: { usename: 'Link', required: true },
     };
     

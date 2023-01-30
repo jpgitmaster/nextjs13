@@ -1,5 +1,6 @@
-'use client';
+'use client'
 import PageController from './controller'
+import '@/styles/global.css'
 const ParentPage = () => {
   const {
     // STATES

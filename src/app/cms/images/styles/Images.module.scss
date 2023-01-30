@@ -1,0 +1,36 @@
+@import '@/styles/colors';
+@import '@/styles/forms';
+.innerpage{
+    float: left;
+    width: 100%;
+    padding: 30px 15px 15px;
+
+    .button.btnblue{
+        float: right;
+        border-radius: 5px;
+        padding: 2px 15px 3px 5px;
+        letter-spacing: 0.5px;
+        img{
+            float: left;
+            margin-right: 5px;
+            &.edit_icon{
+                width: 30px;
+                height: 28px;
+            }
+            &.plus_icon{
+                width: 14px;
+                height: auto;
+                margin: 8px 8px 6px 6px;
+            }
+        }
+        span{
+            font: 13px NunitoSansBold;
+            margin: 7px 0 0;
+            display: inline-block;
+        }
+    }
+}
+.imageForm{
+    margin: 40px auto 0;
+    width: 500px;
+}

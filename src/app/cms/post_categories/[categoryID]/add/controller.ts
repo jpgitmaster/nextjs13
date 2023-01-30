@@ -1,15 +1,18 @@
 'use client'
 import { useState } from 'react'
+import { usePathname } from 'next/navigation'
 import Validate from '@/utils/Validator'
 import ListStates from './../../states'
 import APIcalls from './../../api'
-const AddPageController = () => {
-    const { page_init, page_validations } = ListStates()
-    const {status, setStatus, addPage} = APIcalls()
+const AddPostController = () => {
+    const { post_init, post_validations } = ListStates()
+    const {status, setStatus, addPost} = APIcalls()
     const { loader, statusData } = status
+    const pathname = usePathname()
+    const categoryID: any = pathname?.split('/')[3]
     const [totalErr, setTotalErr] = useState(0)
-    const [page, setPage] = useState<any>(page_init)
-    const [error, setError] = useState<any>(page_init)
+    const [post, setPost] = useState<any>(post_init)
+    const [error, setError] = useState<any>(post_init)
     const configEditor = {
         buttons: ['source', '|', 'bold', 'strikethrough', 'underline', 'italic', '|', 'superscript', 'subscript', '|', 'ul', 'ol', '|', 'outdent', 'indent', '|', 'font', 'fontsize', 'brush', 'paragraph', '|', 'image', 'video', 'table', 'link', '|', 'align'],
         buttonsXS: ['source', '|', 'bold', 'strikethrough', 'underline', 'italic', '|', 'ul', 'ol', '|', 'font', 'fontsize', 'brush', '|', 'image', 'video', 'table', 'link', '|', 'align'],
@@ -18,6 +21,7 @@ const AddPageController = () => {
         hidePoweredByJodit: true,
         readonly: false, // all options from https://xdsoft.net/jodit/doc/
     }
+
     // REMOVING CLIENT VALIDATION PER INPUT
     const removeErr = (name: string) => {
         if (error[name]) {
@@ -29,17 +33,12 @@ const AddPageController = () => {
     // HANDLE INPUT CHANGES
     const handleChange = (event: any) => {
         const { name, value } = event.target
-        setPage({ ...page, [name]: value })
+        setPost({ ...post, [name]: value, categoryId: categoryID })
         removeErr(name)
     }
 
-    const handleLinkID = (value: any) => {
-        setPage({ ...page, linkId: value.id });
-        removeErr('linkId')
-    }
-
     const handleContent = (content: any) => {
-        setPage({ ...page, content: content});
+        setPost({ ...post, content: content, categoryId: categoryID});
     }
 
     // HANDLE SUBMIT
@@ -49,7 +48,7 @@ const AddPageController = () => {
         const {
             validation_has_error,
             validation_errors
-        } = Validate(page_validations, page)
+        } = Validate(post_validations, post)
         if (validation_has_error) {
             const timer = setTimeout(() => {
                 setTotalErr(Object.keys(validation_errors).length)
@@ -59,11 +58,12 @@ const AddPageController = () => {
             }, 500)
             return () => clearTimeout(timer)
         }
-        addPage(page)
+        addPost(post)
     }
     return {
         // STATES
-        page,
+        post,
+        categoryID,
         error,
         loader,
         statusData,
@@ -71,10 +71,9 @@ const AddPageController = () => {
 
         // HANDLES
         handleChange,
-        handleLinkID,
         handleContent,
         handleSubmit,
     }
 }
 
-export default AddPageController;
+export default AddPostController;

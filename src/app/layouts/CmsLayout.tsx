@@ -29,8 +29,8 @@ const CmsLayout = ({children}: any) => {
               Front
             </Link>
           </li>
-          <li className={activeLink === 'posts' ? styles.linkActive : ''}>
-            <Link href='/cms/posts'>
+          <li className={activeLink === 'post_categories' ? styles.linkActive : ''}>
+            <Link href='/cms/post_categories'>
               Posts
             </Link>
           </li>

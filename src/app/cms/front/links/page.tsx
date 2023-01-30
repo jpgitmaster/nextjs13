@@ -6,13 +6,13 @@ const Links = () => {
   return (
     <SubLinks>
       <div className={styles.innerpage}>
+        <h3 className={styles.formTitle}>List of Links</h3>
         <Link href='/cms/front/links/add' className={`${styles.button} ${styles.btnblue}`}>
           <Image src='/svgs/plus_icon.svg' className={styles.plus_icon}  alt='Add Icon' width={20} height={25} />
           <span>
             Add Link
           </span>
         </Link>
-        This is Links
       </div>
     </SubLinks>
   )

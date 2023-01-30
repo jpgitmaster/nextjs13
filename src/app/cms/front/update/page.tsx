@@ -4,7 +4,7 @@ const UpdateFront = () => {
   return (
     <SubLinks>
       <div className={styles.innerpage}>
-        This is Update Front
+      <h3 className={styles.formTitle}>Update Front Details</h3>
       </div>
     </SubLinks>
   )

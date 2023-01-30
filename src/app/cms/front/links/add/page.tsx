@@ -24,6 +24,7 @@ const AddLink = () => {
         { loader && <Loader />}
         { statusData.message && <StatusMessage status={statusData} redirect={'/cms/front/links'} />}
         <form className={styles.linkForm} onSubmit={(e) => handleSubmit(e)} autoComplete='off'>
+          <h3 className={styles.formTitle}>Add Link</h3>
           <div className={styles.npt + (error.name ? ' '+styles.err : '')}>
             {error.name &&
               <div className={`${styles.popover} ${styles.flipInY}`}>
