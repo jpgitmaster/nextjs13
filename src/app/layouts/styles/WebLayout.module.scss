@@ -6,6 +6,13 @@
   display: flex;
   flex-direction: row;
   box-shadow: 0 2px 4px 0px #cec6c6;
+  .imgContainer{
+    width: 375px;
+    .imgLogo{
+      width: 100%;
+      height: auto;
+    }
+  }
 }
 .navbar{
   // background-color: #333647;
@@ -129,8 +136,13 @@
   display: flex;
   flex-direction: row;
   color: $white;
-  img{
+  .imgContainer{
+    width: 375px;
     margin-right: 50px;
+    .imgLogo{
+      width: 100%;
+      height: auto;
+    }
   }
   .footer_links{
     flex: 1;

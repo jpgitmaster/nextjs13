@@ -6,7 +6,6 @@ import styles from './../../styles/Front.module.scss'
 import Loader from '@/utils/RotatingLoader'
 import StatusMessage from '@/utils/StatMessage'
 import Dropdown from './Dropdown'
-import '@/styles/global.css'
 const Editor = dynamic(() => import('@/utils/Editor'), { ssr: false })
 const AddPage = () => {
   const {

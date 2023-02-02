@@ -15,7 +15,9 @@ const WebLayout = ({children}: any) => {
   return (
     <>
       <div className={styles.header}>
-        <Image src='/images/logo3.png'  alt='CoderStudio Logo' width={300} height={75} />
+        <div className={styles.imgContainer}>
+          <Image src='/images/logo3.png' priority alt='CoderStudio Logo' className={styles.imgLogo} width={375} height={0} />
+        </div>
         <nav className={styles.navbar}>
           <ul>
             <li className={styles.hasChildren + (!activeLink[1] ? ' '+styles.linkActive : '')}>
@@ -62,7 +64,9 @@ const WebLayout = ({children}: any) => {
       </div>
       {children}
       <div className={styles.footer}>
-        <Image src='/images/logo3.png'  alt='CoderStudio Logo' width={300} height={75} />
+        <div className={styles.imgContainer}>
+          <Image src='/images/logo3.png' priority alt='CoderStudio Logo' className={styles.imgLogo} width={300} height={0} />
+        </div>
         <div className={styles.footer_links}>
           <h3>Quick Links</h3>
           <ul>
