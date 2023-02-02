@@ -2,7 +2,7 @@
 import { SessionProvider } from 'next-auth/react'
 import CustomSession from './custom_session'
 import '@/styles/global.scss'
-
+import '@/styles/globals.css'
 export default function RootLayout({
   children,
 }: {

@@ -8,6 +8,7 @@ const AddPageController = () => {
     const {status, setStatus, addPage} = APIcalls()
     const { loader, statusData } = status
     const [totalErr, setTotalErr] = useState(0)
+    const [preview, setPreview] = useState(false)
     const [page, setPage] = useState<any>(page_init)
     const [error, setError] = useState<any>(page_init)
     const configEditor = {
@@ -24,6 +25,9 @@ const AddPageController = () => {
             delete error[name]
             setTotalErr(Object.keys(error).length)
         }
+    }
+    const handlePreview = () => {
+        setPreview(preview => !preview)
     }
 
     // HANDLE INPUT CHANGES
@@ -68,8 +72,10 @@ const AddPageController = () => {
         loader,
         statusData,
         configEditor,
+        preview,
 
         // HANDLES
+        handlePreview,
         handleChange,
         handleLinkID,
         handleContent,

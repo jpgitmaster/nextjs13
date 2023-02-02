@@ -16,5 +16,4 @@ const ParentPage = () => {
     </div>
   )
 }
-
 export default ParentPage;
