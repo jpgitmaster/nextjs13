@@ -4,58 +4,77 @@
 .innerpage{
     float: left;
     width: 100%;
-    padding: 30px 15px 15px;
+    padding: 0;
 
-    .button.btnblue{
-        float: right;
-        border-radius: 5px;
-        padding: 2px 15px 3px 5px;
-        letter-spacing: 0.5px;
-        img{
-            float: left;
-            margin-right: 5px;
-            &.edit_icon{
-                width: 30px;
-                height: 28px;
-            }
-            &.plus_icon{
-                width: 14px;
-                height: auto;
-                margin: 8px 8px 6px 6px;
-            }
-        }
-        span{
-            font: 13px NunitoSansBold;
-            margin: 7px 0 0;
-            display: inline-block;
-        }
-    }
-    .formTitle{
-        margin: 0 0 20px;
-        font: 25px NunitoSansReg;
-        color: $text_color_dark;
+    .innerpage_head{
+        padding: 30px 20px 20px;
+        margin: 0;
+        background-color: $lightgray;
+        width: 100%;
         float: left;
+        border-bottom: 1px solid #ccc;
+        // box-shadow: 0 2px 4px 0px #eaeaea;
+        .formTitle{
+            margin: 0;
+            font: 25px NunitoSansReg;
+            color: $text_color_dark;
+            float: left;
+        }
+        .button.btnblue{
+            float: right;
+            border-radius: 5px;
+            padding: 2px 15px 3px 5px;
+            letter-spacing: 0.5px;
+            img{
+                float: left;
+                margin-right: 5px;
+                &.edit_icon{
+                    width: 30px;
+                    height: 28px;
+                }
+                &.plus_icon{
+                    width: 14px;
+                    height: auto;
+                    margin: 8px 8px 6px 6px;
+                }
+            }
+            span{
+                font: 13px NunitoSansBold;
+                margin: 7px 0 0;
+                display: inline-block;
+            }
+        }
     }
     .categoryForm{
-        width: 400px;
-        margin: 0 auto;
-        .formTitle{
-            margin-bottom: 30px;
-        }
-        .button.btngreen{
-            width: 100%;
-            border-radius: 10px;
+        display: inline-block;
+        width: 100%;
+        margin: 50px 0;
+        form{
+            width: 400px;
+            margin: 0 auto;
+            .formTitle{
+                margin-bottom: 30px;
+            }
+            .button.btngreen{
+                width: 100%;
+                border-radius: 10px;
+            }
         }
     }
     .postForm{
-        // width: 80%;
-        margin: 0 0 0 10px;
-        display: flex;
-        flex-direction: column;
-        .button.btngreen{
-            width: 100%;
+        display: inline-block;
+        clear: both;
+        margin: 40px 0;
+        width: 100%;
+        form{
+            width: 80%;
             margin: 0 auto;
-            border-radius: 10px;
+            .button.btngreen{
+                width: 400px;
+                margin: 20px auto;
+                border-radius: 10px;
+                display: block;
+            }
         }
     }
 

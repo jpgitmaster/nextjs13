@@ -17,18 +17,21 @@ const ViewCategory = () => {
   } = GetCategoryController()
   return (
     <div className={styles.innerpage}>
-      {
-        category.name &&
-        <h3 className={styles.formTitle}>
-            {category.name}
-        </h3>
-      }
-      <Link href={'/cms/post_categories/'+categoryID+'/add'} className={`${styles.button} ${styles.btnblue}`}>
-        <Image src='/svgs/plus_icon.svg' className={styles.plus_icon} priority alt='Add Icon' width={20} height={25} />
-        <span>
-          Add Post
-        </span>
-      </Link>
+      <div className={styles.innerpage_head}>
+        {
+          category.name &&
+          <h3 className={styles.formTitle}>
+              {category.name}
+          </h3>
+        }
+        <Link href={'/cms/post_categories/'+categoryID+'/add'} className={`${styles.button} ${styles.btnblue}`}>
+          <Image src='/svgs/plus_icon.svg' className={styles.plus_icon} priority alt='Add Icon' width={20} height={25} />
+          <span>
+            Add Post
+          </span>
+        </Link>
+      </div>
+      
       <div className={styles.postsTable}>
         <div className={styles.postsTableHead}>
           <div className={styles.postsTableCell}>

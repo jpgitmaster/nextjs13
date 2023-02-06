@@ -15,13 +15,16 @@ const PostCategories = () => {
   } = GetCategoriesController();
   return (
     <div className={styles.innerpage}>
-      <h3 className={styles.formTitle}>List Categories</h3>
-      <Link href='/cms/post_categories/add' className={`${styles.button} ${styles.btnblue}`}>
-        <Image src='/svgs/plus_icon.svg' className={styles.plus_icon}  alt='Add Icon' width={20} height={25} />
-        <span>
-          Add Category
-        </span>
-      </Link>
+      <div className={styles.innerpage_head}>
+        <h3 className={styles.formTitle}>List Categories</h3>
+        <Link href='/cms/post_categories/add' className={`${styles.button} ${styles.btnblue}`}>
+          <Image src='/svgs/plus_icon.svg' className={styles.plus_icon}  alt='Add Icon' width={20} height={25} />
+          <span>
+            Add Category
+          </span>
+        </Link>
+      </div>
+      
       <div className={styles.postsTable}>
         <div className={styles.postsTableHead}>
           <div className={styles.postsTableCell}>

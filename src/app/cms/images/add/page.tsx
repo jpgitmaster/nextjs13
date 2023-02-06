@@ -22,12 +22,13 @@ const Images = () => {
               <div className={styles.file_uploader}>
                   <label className={styles.label_button}>
                       <span>Browse</span>
-                      <input type='file' name='imgname' value={image.imgname} onChange={handleFileChange} />
+                      <input type='file' name='imgname' multiple value={image.imgname} onChange={handleFileChange} />
                   </label>
                   <input type='text' readOnly={true} value={image.imgdetails.name || ''} />
               </div>
           </div>
         </div>
+        <button type='submit' className={`${styles.button} ${styles.btngreen}`}>Add Image</button>
       </form>
     </>
   )

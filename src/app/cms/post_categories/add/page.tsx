@@ -1,4 +1,5 @@
 'use client'
+
 import dynamic from 'next/dynamic'
 import Loader from '@/utils/RotatingLoader'
 import StatusMessage from '@/utils/StatMessage'
@@ -21,10 +22,13 @@ const AddCategory = () => {
 } = AddCategoryController();
   return (
     <div className={styles.innerpage}>
+      <div className={styles.innerpage_head}>
+        <h3 className={styles.formTitle}>Add Category</h3>
+      </div>
       { loader && <Loader />}
       { statusData.message && <StatusMessage status={statusData} redirect={'/cms/post_categories'} />}
-        <form className={styles.categoryForm} onSubmit={(e) => handleSubmit(e)} autoComplete='off'>
-          <h3 className={styles.formTitle}>Add Category</h3>
+      <div className={styles.categoryForm}>
+        <form onSubmit={(e) => handleSubmit(e)} autoComplete='off'>
           <div className={styles.npt + (error.name ? ' '+styles.err : '')}>
             {error.name &&
             <div className={`${styles.popover} ${styles.flipInY}`}>
@@ -63,6 +67,7 @@ const AddCategory = () => {
           </div>
           <button type='submit' className={`${styles.button} ${styles.btngreen}`}>Add Category</button>
         </form>
+      </div>
     </div>
   )
 }

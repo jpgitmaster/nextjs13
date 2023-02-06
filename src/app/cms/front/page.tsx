@@ -6,13 +6,15 @@ const Front = () => {
   return (
     <SubLinks>
       <div className={styles.innerpage}>
-        <h3 className={styles.formTitle}>Front Details</h3>
-        <Link href='/cms/front/update' className={`${styles.button} ${styles.btnblue}`}>
-          <Image src='/svgs/edit_icon.svg' className={styles.edit_icon} alt='Edit Icon' priority width={20} height={25} />
-          <span>
-            Update Front
-          </span>
-        </Link>
+        <div className={styles.innerpage_head}>
+          <h3 className={styles.formTitle}>Front Details</h3>
+          <Link href='/cms/front/update' className={`${styles.button} ${styles.btnblue}`}>
+            <Image src='/svgs/edit_icon.svg' className={styles.edit_icon} alt='Edit Icon' priority width={20} height={25} />
+            <span>
+              Update Front
+            </span>
+          </Link>
+        </div>
       </div>
     </SubLinks>
   )

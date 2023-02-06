@@ -31,9 +31,9 @@ const AddPage = () => {
         <div className={styles.innerpage_head}>
           <h3 className={styles.formTitle}>Add Page</h3>
           <button className={`${styles.button} ${styles.btnblue}`} type='button' onClick={handlePreview}>
-            <Image src='/svgs/plus_icon.svg' className={styles.plus_icon}  alt='Add Icon' width={20} height={25} />
+            <Image src='/svgs/eye.svg' className={styles.plus_icon}  alt='Add Icon' width={20} height={25} />
             <span>
-              {!preview ? 'Back to Form' : 'Previewer'}
+              {preview ? 'Back to Form' : 'Previewer'}
             </span>
           </button>
         </div>
