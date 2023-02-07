@@ -62,9 +62,9 @@ const AddPage = () => {
               <div className={`${styles.column} ${styles.w33}`}>
                 <div className={styles.inputWrapper}>
                   <div className={styles.npt}>
-                      <label className={styles.lbl}>Post Category:</label>
-                      <input name='postCategory' type='text' value={page.postCategory} onChange={handleChange} />
-                    </div>
+                    <label className={styles.lbl}>Post Category:</label>
+                    <input name='postCategory' type='text' value={page.postCategory} onChange={handleChange} />
+                  </div>
                 </div>
               </div>
               <div className={`${styles.column} ${styles.w100}`}>

@@ -9,11 +9,11 @@ const AddImagesController = () => {
     } = APIcalls()
     const [image_, setImage]: any[] = useState([])
     const handleFileChange = (event: any) => {
-        // const targetFile = event.target.files[0]
         let imgFiles: any = []
         for (let i = 0; i < event.target.files.length; i++) {
             imgFiles.push({
                 image: event.target.files[i],
+                imageTarget: URL.createObjectURL(event.target.files[i]),
                 name: ''
             })
         }
@@ -27,7 +27,7 @@ const AddImagesController = () => {
     return {
         // STATES
         image,
-
+        image_,
         // HANDLES
         handleFileChange,
         handleSubmit,

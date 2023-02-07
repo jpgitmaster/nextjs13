@@ -1,36 +1,104 @@
 @import '@/styles/colors';
 @import '@/styles/forms';
+@import '@/styles/helpers';
 .innerpage{
     float: left;
     width: 100%;
-    padding: 30px 15px 15px;
-
-    .button.btnblue{
-        float: right;
-        border-radius: 5px;
-        padding: 2px 15px 3px 5px;
-        letter-spacing: 0.5px;
-        img{
+    padding: 0;
+    .innerpage_head{
+        padding: 20px;
+        margin: 0;
+        background-color: $lightgray;
+        width: 100%;
+        float: left;
+        border-bottom: 1px solid #ccc;
+        box-shadow: 0 2px 4px 0px #eaeaea;
+        .formTitle{
+            margin: 0;
+            font: 25px NunitoSansReg;
+            color: $text_color_dark;
             float: left;
-            margin-right: 5px;
-            &.edit_icon{
-                width: 30px;
-                height: 28px;
-            }
-            &.plus_icon{
-                width: 14px;
-                height: auto;
-                margin: 8px 8px 6px 6px;
-            }
         }
-        span{
-            font: 13px NunitoSansBold;
-            margin: 7px 0 0;
-            display: inline-block;
+        .button.btnblue{
+            float: right;
+            border-radius: 5px;
+            padding: 2px 15px 3px 5px;
+            letter-spacing: 0.5px;
+            img{
+                float: left;
+                margin-right: 5px;
+                &.edit_icon{
+                    width: 30px;
+                    height: 28px;
+                }
+                &.plus_icon{
+                    width: 14px;
+                    height: auto;
+                    margin: 8px 8px 6px 6px;
+                }
+            }
+            span{
+                font: 13px NunitoSansBold;
+                margin: 7px 0 0;
+                display: inline-block;
+            }
         }
     }
+    .isFile{
+        float: right;
+        width: auto;
+        padding: 0;
+        margin: 0;
+
+        .file_uploader .label_button span{
+            padding: 10px 0 2px 12px;
+            margin: 0;
+        }
+    }
+    // .button.btnblue{
+    //     float: right;
+    //     border-radius: 5px;
+    //     padding: 2px 15px 3px 5px;
+    //     letter-spacing: 0.5px;
+    //     img{
+    //         float: left;
+    //         margin-right: 5px;
+    //         &.edit_icon{
+    //             width: 30px;
+    //             height: 28px;
+    //         }
+    //         &.plus_icon{
+    //             width: 14px;
+    //             height: auto;
+    //             margin: 8px 8px 6px 6px;
+    //         }
+    //     }
+    //     span{
+    //         font: 13px NunitoSansBold;
+    //         margin: 7px 0 0;
+    //         display: inline-block;
+    //     }
+    // }
 }
 .imageForm{
-    margin: 40px auto 0;
-    width: 500px;
+    margin: 20px;
+    float: left;
+    .imageContainer{
+        border: 1px solid $darkgray;
+        background-color: $gray;
+        overflow: hidden;
+        padding: 10px;
+        margin: 8px;
+        .npt{
+            margin: 25px 0 0;
+            padding: 0;
+            input{
+                background-color: $white;
+            }
+        }
+        img{
+
+            width: 100%;
+        }
+    }
 }
