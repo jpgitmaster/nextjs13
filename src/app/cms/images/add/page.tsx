@@ -6,9 +6,10 @@ const Images = () => {
   const {
     // STATES
     image_,
-    image,
+    checkbx,
     
     // HANDLES
+    handleCheckbox,
     handleChange,
     handleFileChange,
     handleSubmit,
@@ -21,7 +22,7 @@ const Images = () => {
           <div className={`${styles.button} ${styles.btnblue} ${styles.file_uploader}`}>
               <label className={styles.label_button}>
                   <span>Browse Image</span>
-                  <input type='file' name='imgname' multiple value={image.imgname} onChange={handleFileChange} />
+                  <input type='file' name='imgname' multiple onChange={handleFileChange} />
               </label>
           </div>
         </div>
@@ -30,6 +31,11 @@ const Images = () => {
         {
           image_.length ?
           <>
+            <label className={styles.checkbox}>
+              <input type='checkbox' name='checkAll' checked={checkbx} onChange={handleCheckbox} />
+              <span className={styles.checkmark}></span>
+              <span className={styles.lbl}>Auto Fill</span>
+            </label>
            <div className={styles.columns}>
             {
               image_.map((image: any, index: any) =>

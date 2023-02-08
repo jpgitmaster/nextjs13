@@ -4,10 +4,10 @@ import APIcalls from './../api';
 const AddImagesController = () => {
     const {
         status,
-        image,
         addImage
     } = APIcalls()
     const [image_, setImage]: any[] = useState([])
+    const [checkbx, setCheckbx] = useState(false)
     const handleFileChange = (event: any) => {
         let imgFiles: any = []
         for (let i = 0; i < event.target.files.length; i++) {
@@ -21,17 +21,33 @@ const AddImagesController = () => {
         setImage(imgFiles)
         // setImage({ files: [...image_.files, ...event.target.files] })
     }
+
+    // HANDLE CHECK EACH CHECKBOX
+    const handleCheckbox = () => {
+        setCheckbx(!checkbx)
+    }
+
     const handleChange = (event: any, index: any) => {
         const { name, value } = event.target
-        const newImages = image_.map((img: any, indx: any) => indx === index ? {
-            ...img,
-            [name]: value,
-            keycode: value.replace(/\s+/g, '_').toLowerCase()
-        } : {
-            ...img,
-            name: value+' '+indx,
-            keycode: value.replace(/\s+/g, '_').toLowerCase()+'_'+indx,
-        })
+        let newImages = []
+        if(checkbx){
+            newImages = image_.map((img: any, indx: any) => indx === index ? {
+                ...img,
+                [name]: value,
+                keycode: value.replace(/\s+/g, '_').toLowerCase()
+            } : {
+                ...img,
+                name: value+' '+indx,
+                keycode: value.replace(/\s+/g, '_').toLowerCase()+'_'+indx,
+            })
+        }else{
+            newImages = image_.map((img: any, indx: any) => indx === index ? {
+                ...img,
+                [name]: value,
+                keycode: value.replace(/\s+/g, '_').toLowerCase()
+            } : img)
+        }
+        
         // console.log(newImages)
         setImage(newImages)
      }
@@ -47,9 +63,10 @@ const AddImagesController = () => {
 
     return {
         // STATES
-        image,
         image_,
+        checkbx,
         // HANDLES
+        handleCheckbox,
         handleFileChange,
         handleChange,
         handleSubmit,
