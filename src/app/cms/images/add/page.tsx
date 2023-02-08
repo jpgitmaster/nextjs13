@@ -8,8 +8,8 @@ const Images = () => {
     image_,
     image,
     
-
     // HANDLES
+    handleChange,
     handleFileChange,
     handleSubmit,
   } = AddImagesController();
@@ -35,10 +35,14 @@ const Images = () => {
               image_.map((image: any, index: any) =>
                 <div key={index} className={`${styles.column} ${styles.w25}`}>
                   <div className={styles.imageContainer}>
-                    <Image src={image.imageTarget} alt='Image' width={200} height={200} />
+                    <Image src={image.imageTarget} alt='Image' width="0" height="0" sizes="100vw" />
                     <div className={styles.npt}>
-                      <label className={styles.lbl}>Image Name:</label>
-                      <input name='name' type='text' />
+                      <label className={styles.lbl}>Image Name: <span>*</span></label>
+                      <input name='name' type='text' value={image_[`${index}`]?.name || ''} onChange={(event) => handleChange(event, index)} />
+                    </div>
+                    <div className={styles.npt}>
+                        <label className={styles.lbl}>Code <span>*</span></label>
+                        <input name='keycode' type='text' value={image_[`${index}`]?.keycode || ''} onChange={(event) => handleChange(event, index)} />
                     </div>
                   </div>
                 </div>
